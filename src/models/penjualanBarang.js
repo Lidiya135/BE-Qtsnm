@@ -1,8 +1,8 @@
 const Pool = require("../config/db");
 
-const selectBarang = () => {
+const selectBarang = (search) => {
   return new Promise((resolve, reject) =>
-    Pool.query(`SELECT * FROM barang`, (err, result) => {
+    Pool.query(`SELECT * FROM barang WHERE nama_barang ILIKE '%${search}%'`, (err, result) => {
       if (!err) {
         resolve(result);
       } else {
@@ -11,6 +11,8 @@ const selectBarang = () => {
     })
   );
 };
+
+
 
 const deleteBarang = (id) => {
   return new Promise((resolve, reject) =>
@@ -42,4 +44,5 @@ const selectBarangById = (id) => {
   return Pool.query(`Select * from barang where id='${id}'`)
 };
 
-module.exports = { selectBarang, deleteBarang, insertBarang, updateBarang, selectBarangById };
+
+module.exports = { selectBarang, deleteBarang, insertBarang, updateBarang, selectBarangById};
