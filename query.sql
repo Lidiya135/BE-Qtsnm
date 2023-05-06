@@ -5,7 +5,7 @@ CREATE TABLE barang (
     nama_barang VARCHAR,
     stok INT,
     jumlah_terjual INT,
-    tanggal_transaksi DATE,
+    tanggal_transaksi VARCHAR,
     jenis_barang VARCHAR
 );
 
@@ -16,3 +16,7 @@ INSERT INTO barang (id, nama_barang, stok, jumlah_terjual, tanggal_transaksi, je
 UPDATE barang SET nama_barang='Kopi', stok=99, jumlah_terjual=101, tanggal_transaksi='2021-03-11', jenis_barang='Konsumsi' WHERE id='1';
 
 DELETE FROM barang WHERE id='2';
+
+SELECT * FROM barang WHERE nama_barang ILIKE search=sabun ORDER BY sortBy=nama_barang sort=asc;
+
+SELECT * FROM barang WHERE nama_barang ILIKE '%sabun%' ORDER BY nama_barang ASC;

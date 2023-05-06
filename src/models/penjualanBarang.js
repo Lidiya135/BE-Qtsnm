@@ -1,5 +1,17 @@
 const Pool = require("../config/db");
 
+const selectBarangg = (search, sortby, sort) => {
+  return new Promise((resolve, reject) =>
+    Pool.query(`SELECT * FROM barang WHERE nama_barang ILIKE '%${search}%' ORDER BY ${sortby} ${sort}`, (err, result) => {
+      if (!err) {
+        resolve(result);
+      } else {
+        reject(err);
+      }
+    })
+  );
+};
+
 const selectBarang = (search) => {
   return new Promise((resolve, reject) =>
     Pool.query(`SELECT * FROM barang WHERE nama_barang ILIKE '%${search}%'`, (err, result) => {
@@ -11,8 +23,6 @@ const selectBarang = (search) => {
     })
   );
 };
-
-
 
 const deleteBarang = (id) => {
   return new Promise((resolve, reject) =>
@@ -45,4 +55,4 @@ const selectBarangById = (id) => {
 };
 
 
-module.exports = { selectBarang, deleteBarang, insertBarang, updateBarang, selectBarangById};
+module.exports = { selectBarang, selectBarangg, deleteBarang, insertBarang, updateBarang, selectBarangById};

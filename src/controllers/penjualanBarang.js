@@ -1,6 +1,5 @@
 const ModelBarang = require("../models/penjualanBarang");
 const { response } = require("../middleware/common");
-const { search } = require("../routes/penjualanBarang");
 
 const BarangController = {
     select: (req, res, next) => {
@@ -11,6 +10,15 @@ const BarangController = {
             .then((result) => response(res, 200, true, result.rows, "get data success"))
             .catch((err) => response(res, 404, false, err, "get data fail"))
     },
+
+    selectt: (req, res, next) => {
+        const search = req.query.search || "";
+        const sortby = req.query.sortby || "nama_barang";
+        const sort = req.query.sort || "ASC";
+            ModelBarang.selectBarang(search, sortby, sort)
+                .then((result) => response(res, 200, true, result.rows, "get data success"))
+                .catch((err) => response(res, 404, false, err, "get data fail"))
+        },
 
     delete: (req, res, next) => {
         ModelBarang.deleteBarang(req.params.id)
