@@ -8,5 +8,6 @@ router.delete('/:id',BarangController.delete);
 router.post('/',BarangController.insert);
 router.put('/:id',BarangController.update);
 router.get('/:id',BarangController.selectId);
+router.get('/:jenis_barang',BarangController.selectType);
 
 module.exports = router;

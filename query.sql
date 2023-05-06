@@ -5,7 +5,7 @@ CREATE TABLE barang (
     nama_barang VARCHAR,
     stok INT,
     jumlah_terjual INT,
-    tanggal_transaksi VARCHAR,
+    tanggal_transaksi DATE,
     jenis_barang VARCHAR
 );
 
@@ -20,3 +20,5 @@ DELETE FROM barang WHERE id='2';
 SELECT * FROM barang WHERE nama_barang ILIKE search=sabun ORDER BY sortBy=nama_barang sort=asc;
 
 SELECT * FROM barang WHERE nama_barang ILIKE '%sabun%' ORDER BY nama_barang ASC;
+
+Select * from barang where jenis_barang='konsumsi';
